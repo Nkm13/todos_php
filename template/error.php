@@ -6,5 +6,7 @@
       <span>
           <?= $errorMessage ?>
       </span>
+      <br />
+      <a href="/" class="btn btn-sm btn-primary mt-2">Go home</a>
   </div>
   <?php $content = ob_get_clean(); ?> <?php require('./template/layout.php') ?>

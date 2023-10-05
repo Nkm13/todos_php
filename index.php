@@ -12,9 +12,9 @@ $uri = parse_url($_SERVER['REQUEST_URI'])["path"];
 $regex = "#\d+#";
 $match = [];
 preg_match_all($regex, $uri, $match);
-$id = $match[0][0];
-$title = htmlspecialchars($_POST["title"]);
-$content = htmlspecialchars($_POST["content"]);
+$id = $match[0][0] ?? 0;
+$title = htmlspecialchars($_POST["title"] ?? "");
+$content = htmlspecialchars($_POST["content"] ?? "");
 
 try {
     $homeCtrl = new HomeController();

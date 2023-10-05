@@ -11,11 +11,15 @@ use Application\config\Database\DatabaseConnection;
 
 class HomeController
 {
+    private HomeModel  $homeModel;
+    public function __construct()
+    {
+        $this->homeModel = new HomeModel();
+        $this->homeModel->connection = new DatabaseConnection("todos_php", "root", "root");
+    }
     public function index()
     {
-        $homeModel = new HomeModel();
-        $homeModel->connection = new DatabaseConnection("todos_php", "root", "root");
-        $allTodos = $homeModel->index();
+        $allTodos = $this->homeModel->index();
         require("./view/home.php");
     }
 }

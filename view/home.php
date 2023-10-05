@@ -4,7 +4,7 @@
   <div class="container-sm">
       <div class="d-flex mb-3 mt-3">
           <div class="me-auto p-2">
-              <h1 class="text-muted">Todos App</h1>
+              <h2 class="text-muted">Todos App</h2>
           </div>
           <div class="p-2">
               <a href="/add-todo">
@@ -16,7 +16,8 @@
           </div>
       </div>
       <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active mt-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+          <div class="tab-pane fade show active mt-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+              tabindex="0">
               <table class="table">
                   <thead>
                       <tr>
@@ -31,23 +32,23 @@
                       <?php
                         foreach ($allTodos as $todo) {
                         ?>
-                          <tr>
-                              <th scope="row"><?= $todo["id"] ?></th>
-                              <td><?= $todo["date_formated"] ?></td>
-                              <td>
-                                  <?= $todo["title"] ?>
-                              </td>
-                              <td><?= $todo["content"] ?></td>
-                              <td>
+                      <tr>
+                          <th scope="row"><?= $todo["id"] ?></th>
+                          <td><?= $todo["date_formated"] ?></td>
+                          <td>
+                              <?= $todo["title"] ?>
+                          </td>
+                          <td><?= $todo["content"] ?></td>
+                          <td>
 
-                                  <a href="/todo/<?= $todo["id"] ?>/edit" type="button" class="btn btn-warning">
-                                      Edit
-                                  </a>
-                                  <a href="/todo/<?= $todo["id"] ?>/delete" type="button" class="btn btn-danger">
-                                      Delete
-                                  </a>
-                              </td>
-                          </tr>
+                              <a href="/todo/<?= $todo["id"] ?>/edit" type="button" class="btn btn-warning">
+                                  Edit
+                              </a>
+                              <a href="/todo/<?= $todo["id"] ?>/delete" type="button" class="btn btn-danger">
+                                  Delete
+                              </a>
+                          </td>
+                      </tr>
                       <?php
                         }
                         ?>

@@ -4,7 +4,7 @@
   <div class="container-sm">
       <div class="d-flex mb-3 mt-3">
           <div class="me-auto p-2">
-              <h3 class="text-muted">Todos App - add</h3>
+              <h2 class="text-muted">Todos App - Add</h2>
           </div>
       </div>
       <form action="add-todo/save" method="post" class="row g-3 mt-3">

@@ -12,13 +12,17 @@ use Application\config\Database\DatabaseConnection;
 
 class TodoController
 {
-    public DatabaseConnection $connection;
+    private TodoModel $todoModel;
+
+    public function __construct()
+    {
+        $this->todoModel = new TodoModel();
+        $this->todoModel->connection = new DatabaseConnection("todos_php", "root", "root");
+    }
     public function add($title, $content)
     {
         if (isset($title) && isset($content) && !empty($content) && !empty($title)) {
-            $todoModel = new TodoModel();
-            $todoModel->connection = new DatabaseConnection("todos_php", "root", "root");
-            $todoModel->save($title, $content);
+            $this->todoModel->save($title, $content);
             return  header("Location: /");
         }
         require("./view/add_todo.php");
@@ -26,25 +30,21 @@ class TodoController
 
     public function edit($id, $title, $content)
     {
-        $todoModel = new TodoModel();
-        $todoModel->connection = new DatabaseConnection("todos_php", "root", "root");
-        if (!$todoModel->isExistingTodo($id)) {
+        if (!$this->todoModel->isExistingTodo($id)) {
             return  header("Location: /");
         };
-        $todo = $todoModel->isExistingTodo($id);
-        $oldContent = $todo["content"];
-        $oldTitle  = $todo["title"];
+        $todo = $this->todoModel->isExistingTodo($id);
         if (!empty($content) && !empty($title) & !empty($id)) {
-            $todoModel->edit($id, $title, $content);
+            $this->todoModel->edit($id, $title, $content);
             return  header("Location: /");
         }
+        $oldContent = $todo["content"];
+        $oldTitle  = $todo["title"];
         require("./view/edit_todo.php");
     }
     public function delete($id)
     {
-        $todoModel = new TodoModel();
-        $todoModel->connection = new DatabaseConnection("todos_php", "root", "root");
-        $todoModel->delete($id);
+        $this->todoModel->delete($id);
         return  header("Location: /");
     }
 }
