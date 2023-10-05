@@ -2,8 +2,8 @@
 
 namespace Application\controller\Home;
 
-require_once("../config/database.php");
-require_once("../src/home.php");
+require_once("./config/database.php");
+require_once("./model/home.php");
 
 
 use Application\src\Home\HomeModel;
@@ -11,16 +11,11 @@ use Application\config\Database\DatabaseConnection;
 
 class HomeController
 {
-    function execute()
+    public function index()
     {
-        $home = new HomeModel();
-        $home->connection = new DatabaseConnection("todos_php", "root", "root");
-        $todos = $home->getTodos();
-        require("../view/home.php");
-    }
-
-    function addTodo()
-    {
-        require("../view/add_todo.php");
+        $homeModel = new HomeModel();
+        $homeModel->connection = new DatabaseConnection("todos_php", "root", "root");
+        $allTodos = $homeModel->index();
+        require("./view/home.php");
     }
 }

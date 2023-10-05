@@ -4,10 +4,10 @@ namespace Application\errors\error;
 
 class Exception
 {
-    private String $message = "La page que vous cherchez n'existe pas";
+    private String $message = "Sorry, page not found";
     public function notFound()
     {
         $errorMessage = $this->message;
-        require('../template/error.php');
+        require('./template/error.php');
     }
 }

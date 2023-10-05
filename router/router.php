@@ -20,4 +20,19 @@ class Router
         }
         return $action();
     }
+
+    public function router(String $uri)
+    {
+        $routes = [
+            "/" => "controller/home.php",
+            "/add-todo" => "controller/add_todo.php",
+        ];
+
+        if (array_key_exists($uri, $routes)) {
+            require $routes[$uri];
+        } else {
+            http_response_code(404);
+            echo "error";
+        }
+    }
 }
